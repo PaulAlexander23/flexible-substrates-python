@@ -28,7 +28,13 @@ mat = Matrix([[expand(z).coeff(t) for t in [A, B, C, D]] for z in bc])
 vec = [z.subs([(A, 0), (B, 0), (C, 0), (D, 0)]) for z in bc]
 
 eqn = mat.det()
-myc = solve(eqn, c)
 
-with open("output-without-AI.txt","w") as f:
-    print(myc,file=f)
+eqnC = Poly(eqn, c)
+
+with open("equation.txt","w") as f:
+       print(eqnC.coeffs(),file=f)
+
+#myc = solve(eqn, c)
+
+#with open("output-without-AI.txt","w") as f:
+#    print(myc,file=f)
